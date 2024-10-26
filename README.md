@@ -1,7 +1,7 @@
 # MIDI Strummer
 A GDWeave mod to play guitars with a MIDI input device! 🎶
 
-the guitar will play with or without the menu open; feel free to run around, fish, and talk in chat while playing! ૮˶• ﻌ •˶ა
+the guitar will play with or without the menu open; feel free to run around, fish, and talk in chat while playing!
 
 ## Installation
 > [!NOTE]  
