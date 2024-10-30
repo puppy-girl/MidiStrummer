@@ -1,0 +1,10 @@
+{
+    "Id": "MidiStrummer",
+    "PackPath": "MidiStrummer.pck",
+    "Metadata": {
+        "Name": "MIDI Strummer",
+        "Author": "Jade",
+        "Version": "1.1.1",
+        "Description": "Play guitars with a MIDI input"
+    }
+}

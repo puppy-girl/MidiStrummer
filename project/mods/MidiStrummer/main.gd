@@ -1,4 +1,3 @@
-class_name MidiStrummer
 extends Node
 
 const OPEN_STRING_PITCHES := [40, 45, 50, 55, 59, 64]
