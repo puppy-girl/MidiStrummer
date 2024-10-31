@@ -8,16 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "MidiStrummer",
-"language": "GDScript",
-"path": "res://mods/MidiStrummer/main.gd"
-} ]
-_global_script_class_icons={
-"MidiStrummer": ""
-}
-
 [application]
 
 config/name="MidiStrummer"
