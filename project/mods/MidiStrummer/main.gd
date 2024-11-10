@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 	if !_is_pitch_in_bounds(pitch):
 		return
 	
-	var possible_notes := _get_possible_notes(pitch)
+	var possible_notes := _get_possible_notes(pitch, event.velocity)
 	var note := _get_best_note(possible_notes)
 	_play_note(note)
 
@@ -36,14 +36,14 @@ func _is_pitch_in_bounds(pitch: int) -> bool:
 
 
 # returns array of possible guitar notes for a given pitch in format [string, fret]
-func _get_possible_notes(pitch: int) -> Array:
+func _get_possible_notes(pitch: int, velocity: int) -> Array:
 	var possible_notes := []
 	
 	var string: int = 0
 	for string_pitch in OPEN_STRING_PITCHES:
 		if pitch >= string_pitch and pitch <= string_pitch + HIGHEST_FRET:
 			var fret: int = pitch - string_pitch
-			possible_notes.append([string, fret])
+			possible_notes.append([string, fret, velocity])
 		string += 1
 	
 	return possible_notes
@@ -71,6 +71,7 @@ func _get_best_note(notes: Array) -> Array:
 func _play_note(note: Array) -> void:
 	var string: int = note[0]
 	var fret: int = note[1]
+	var velocity: float = float(note[2]) / 127.0
 	
 	var delta: int = OS.get_system_time_msecs() - _last_strum[string][0]
 	
@@ -78,7 +79,7 @@ func _play_note(note: Array) -> void:
 		PlayerData.emit_signal("_hammer_guitar", string, fret)
 		pass
 	else:
-		PlayerData.emit_signal("_play_guitar", string, fret, 1.0)
+		PlayerData.emit_signal("_play_guitar", string, fret, velocity)
 		_last_strum[string] = [OS.get_system_time_msecs(), fret]
 	
 	_update_string_queue(string)
